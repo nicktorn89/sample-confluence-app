@@ -1,0 +1,69 @@
+{
+  "key": "my-app",
+  "name": "My app",
+  "description": "My very first app",
+  "baseUrl": "{{localBaseUrl}}",
+  "authentication": {
+    "type": "jwt"
+  },
+  "lifecycle": {
+    "installed": "/installed"
+  },
+  "scopes": [
+    "READ"
+  ],
+  "apiMigrations": {
+    "signed-install": true
+  },
+  "modules": {
+    "webPanels": [
+      {
+        "url": "/hello-world",
+        "location": "atl.footer",
+        "layout": {
+          "width": "0",
+          "height": "0"
+        },
+        "weight": 50,
+        "name": {
+          "value": "Hello world webpanel"
+        },
+        "key": "helloworld-web-panel",
+        "conditions": [
+          {
+            "condition": "printable_version",
+            "invert": true
+          }
+        ]
+      }
+    ],
+    "generalPages": [
+      {
+        "key": "hello-world-page-jira",
+        "location": "system.top.navigation.bar",
+        "name": {
+          "value": "Hello World"
+        },
+        "url": "/hello-world",
+        "conditions": [
+          {
+            "condition": "user_is_logged_in"
+          }
+        ]
+      },
+      {
+        "key": "hello-world-page-confluence",
+        "location": "system.header/left",
+        "name": {
+          "value": "Hello World"
+        },
+        "url": "/hello-world",
+        "conditions": [
+          {
+            "condition": "user_is_logged_in"
+          }
+        ]
+      }
+    ]
+  }
+}
